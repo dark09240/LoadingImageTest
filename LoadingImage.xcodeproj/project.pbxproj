@@ -15,6 +15,7 @@
 		B6BB205F1D112FB300C68CCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BB205D1D112FB300C68CCD /* LaunchScreen.storyboard */; };
 		B6BB206A1D112FB300C68CCD /* LoadingImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20691D112FB300C68CCD /* LoadingImageTests.m */; };
 		B6BB20751D112FB300C68CCD /* LoadingImageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20741D112FB300C68CCD /* LoadingImageUITests.m */; };
+		B6BB20841D11300D00C68CCD /* LoadingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20831D11300D00C68CCD /* LoadingImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		B6BB20701D112FB300C68CCD /* LoadingImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoadingImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BB20741D112FB300C68CCD /* LoadingImageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingImageUITests.m; sourceTree = "<group>"; };
 		B6BB20761D112FB300C68CCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6BB20821D11300D00C68CCD /* LoadingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingImageView.h; sourceTree = "<group>"; };
+		B6BB20831D11300D00C68CCD /* LoadingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 		B6BB204E1D112FB300C68CCD /* LoadingImage */ = {
 			isa = PBXGroup;
 			children = (
+				B6BB20821D11300D00C68CCD /* LoadingImageView.h */,
+				B6BB20831D11300D00C68CCD /* LoadingImageView.m */,
 				B6BB20521D112FB300C68CCD /* AppDelegate.h */,
 				B6BB20531D112FB300C68CCD /* AppDelegate.m */,
 				B6BB20551D112FB300C68CCD /* ViewController.h */,
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6BB20571D112FB300C68CCD /* ViewController.m in Sources */,
+				B6BB20841D11300D00C68CCD /* LoadingImageView.m in Sources */,
 				B6BB20541D112FB300C68CCD /* AppDelegate.m in Sources */,
 				B6BB20511D112FB300C68CCD /* main.m in Sources */,
 			);
