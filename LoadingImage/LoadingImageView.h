@@ -2,18 +2,16 @@
 //  LoadingImageView.h
 //  LoadingImage
 //
-//  Created by Lycodes_Dong on 6/15/16.
+//  Created by Lycodes_Dong on 8/26/16.
 //  Copyright © 2016 Dong. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface LoadingImageView : UIView
+@interface LoadingImageView : UIImageView
 
-@property (strong, nonatomic) UIActivityIndicatorView *myActivityIndicatorView;
+- (instancetype)initWithFrame:(CGRect)frame URL:(NSString *)urlstring;
 
-@property (nonatomic) BOOL finished;
-
-- (id)initWithFrame:(CGRect)frame URL:(NSString *)urlstring;
+- (void)startWithURL:(NSString *)urlstring;
 
 @end

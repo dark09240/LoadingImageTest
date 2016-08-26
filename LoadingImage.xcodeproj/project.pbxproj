@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6AF3EB01D701F7500ED4E4A /* LoadingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF3EAF1D701F7500ED4E4A /* LoadingImageView.m */; };
 		B6BB20511D112FB300C68CCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20501D112FB300C68CCD /* main.m */; };
 		B6BB20541D112FB300C68CCD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20531D112FB300C68CCD /* AppDelegate.m */; };
 		B6BB20571D112FB300C68CCD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20561D112FB300C68CCD /* ViewController.m */; };
@@ -15,7 +16,6 @@
 		B6BB205F1D112FB300C68CCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BB205D1D112FB300C68CCD /* LaunchScreen.storyboard */; };
 		B6BB206A1D112FB300C68CCD /* LoadingImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20691D112FB300C68CCD /* LoadingImageTests.m */; };
 		B6BB20751D112FB300C68CCD /* LoadingImageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20741D112FB300C68CCD /* LoadingImageUITests.m */; };
-		B6BB20841D11300D00C68CCD /* LoadingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BB20831D11300D00C68CCD /* LoadingImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B6AF3EAE1D701F7500ED4E4A /* LoadingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingImageView.h; sourceTree = "<group>"; };
+		B6AF3EAF1D701F7500ED4E4A /* LoadingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingImageView.m; sourceTree = "<group>"; };
 		B6BB204C1D112FB300C68CCD /* LoadingImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoadingImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BB20501D112FB300C68CCD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6BB20521D112FB300C68CCD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,8 +54,6 @@
 		B6BB20701D112FB300C68CCD /* LoadingImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoadingImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BB20741D112FB300C68CCD /* LoadingImageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingImageUITests.m; sourceTree = "<group>"; };
 		B6BB20761D112FB300C68CCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6BB20821D11300D00C68CCD /* LoadingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingImageView.h; sourceTree = "<group>"; };
-		B6BB20831D11300D00C68CCD /* LoadingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +104,8 @@
 		B6BB204E1D112FB300C68CCD /* LoadingImage */ = {
 			isa = PBXGroup;
 			children = (
-				B6BB20821D11300D00C68CCD /* LoadingImageView.h */,
-				B6BB20831D11300D00C68CCD /* LoadingImageView.m */,
+				B6AF3EAE1D701F7500ED4E4A /* LoadingImageView.h */,
+				B6AF3EAF1D701F7500ED4E4A /* LoadingImageView.m */,
 				B6BB20521D112FB300C68CCD /* AppDelegate.h */,
 				B6BB20531D112FB300C68CCD /* AppDelegate.m */,
 				B6BB20551D112FB300C68CCD /* ViewController.h */,
@@ -276,7 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6BB20571D112FB300C68CCD /* ViewController.m in Sources */,
-				B6BB20841D11300D00C68CCD /* LoadingImageView.m in Sources */,
+				B6AF3EB01D701F7500ED4E4A /* LoadingImageView.m in Sources */,
 				B6BB20541D112FB300C68CCD /* AppDelegate.m in Sources */,
 				B6BB20511D112FB300C68CCD /* main.m in Sources */,
 			);
@@ -504,6 +504,7 @@
 				B6BB207B1D112FB300C68CCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B6BB207C1D112FB300C68CCD /* Build configuration list for PBXNativeTarget "LoadingImageTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +513,7 @@
 				B6BB207E1D112FB300C68CCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B6BB207F1D112FB300C68CCD /* Build configuration list for PBXNativeTarget "LoadingImageUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +522,7 @@
 				B6BB20811D112FB300C68CCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

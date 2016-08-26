@@ -7,11 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "LoadingImageView.h"
 
 @interface ViewController ()
-
-@property (strong, nonatomic) LoadingImageView *myLoadingImageView;
 
 @end
 
@@ -20,36 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self createLoadingImageView];
+    [self createMyLoadingImageView];
     
 }
 
-- (void)createLoadingImageView {
-    
-    for (UIView *view in self.view.subviews) {
-        if (view == self.myLoadingImageView) {
-            [view removeFromSuperview];
-        }
-    }
-    
-    self.myLoadingImageView = nil;
-    
-    if (!self.myLoadingImageView) {
-        self.myLoadingImageView = [[LoadingImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300) URL:@""];
-    }else {
-        NSLog(@"LoadingImageView is not nil...");
-    }
-    
-    [self.view addSubview:self.myLoadingImageView];
+- (void)createMyLoadingImageView {
 
-}
+    CGRect frame;
+    
+    NSString *urlstring = @"http://122.146.84.65:8081/phpqrcode/temp/test.png";
+    
+//    _myLoadingImageView = [[LoadingImageView alloc]initWithFrame:frame URL:urlstring];
 
-- (IBAction)buttonClick:(id)sender {
-
-    if (self.myLoadingImageView.finished) {
-        [self createLoadingImageView];
-    }
-
+    [_myLoadingImageView startWithURL:urlstring];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -2,63 +2,29 @@
 //  LoadingImageView.m
 //  LoadingImage
 //
-//  Created by Lycodes_Dong on 6/15/16.
+//  Created by Lycodes_Dong on 8/26/16.
 //  Copyright © 2016 Dong. All rights reserved.
 //
 
 #import "LoadingImageView.h"
 
+@interface LoadingImageView()
+
+@property UIActivityIndicatorView *myActivityIndicatorView;
+
+@end
+
 @implementation LoadingImageView
 
 #pragma mark Self init
 
-- (id)initWithFrame:(CGRect)frame URL:(NSString *)urlstring {
+- (instancetype)initWithFrame:(CGRect)frame URL:(NSString *)urlstring {
 
     self = [super initWithFrame:frame];
     
     if (self) {
         
-        self.finished = false;
-        
-        self.backgroundColor = [UIColor lightGrayColor];
-        
-        self.myActivityIndicatorView = [self createCustomActivityIndicatorViewWithView:self];
-        
-        [self addSubview:self.myActivityIndicatorView];
-        
-        [self.myActivityIndicatorView startAnimating];
-        
-        NSURL *url = [NSURL URLWithString:urlstring];
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        
-        NSURLSession *session = [NSURLSession sharedSession];
-        
-        NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error){
-            
-            if (error == nil) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    NSData *data = [NSData dataWithContentsOfURL:location];
-                    
-                    UIImage *image = [UIImage imageWithData:data];
-                    
-                    UIImageView *imageview = [[UIImageView alloc]initWithImage:image];
-                    
-                    imageview.frame = frame;
-                    
-                    [[NSNotificationCenter defaultCenter]postNotificationName:@"LoadingImage" object:imageview];
-                    
-                });
-                
-            }
-            
-        }];
-        
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(finishLoadingImageWith:) name:@"LoadingImage" object:nil];
-        
-        [downloadTask resume];
+        [self startWithURL:urlstring];
         
     }
     
@@ -66,34 +32,84 @@
 
 }
 
-#pragma mark Finish Loading Image
+#pragma mark Self Start
 
-- (void)finishLoadingImageWith:(NSNotification *)notification {
+- (void)startWithURL:(NSString *)urlstring {
+
+    self.backgroundColor = [UIColor grayColor];
     
-    [self.myActivityIndicatorView stopAnimating];
+    _myActivityIndicatorView = [self createMyCustomUIActivityIndicatorViewWithframe:self.frame];
     
-    for (UIView *view in self.subviews) {
-        if (view == self.myActivityIndicatorView) {
-            [view removeFromSuperview];
-        }
-    }
+    [self addSubview:self.myActivityIndicatorView];
     
-    UIImageView *imageview = [notification object];
-    
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-    
-    [self addSubview:imageview];
-    
-    self.finished = true;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.myActivityIndicatorView startAnimating];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self getImageWithURL:urlstring Completion:^(UIImage *image){
+                
+                [self finishedLoadingImage:image];
+                
+            }];
+            
+        });
+        
+    });
 
 }
 
-#pragma mark CustomActivityIndicatorView
+#pragma mark Finished Loading Image
 
-- (UIActivityIndicatorView *)createCustomActivityIndicatorViewWithView:(UIView *)view {
+- (void)finishedLoadingImage:(UIImage *)image {
     
-    UIActivityIndicatorView *myActivityIndicatorView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height)];
-    myActivityIndicatorView.center = CGPointMake(view.bounds.size.width / 2, view.bounds.size.height /2);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.myActivityIndicatorView stopAnimating];
+        
+        [self.myActivityIndicatorView removeFromSuperview];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            self.image = image;
+            
+        });
+        
+    });
+    
+}
+
+#pragma mark Get Image
+
+- (void)getImageWithURL:(NSString *)urlstring Completion:(void(^)(UIImage *))completion {
+
+    NSURL *url = [NSURL URLWithString:urlstring];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error){
+    
+        NSData *data = [NSData dataWithContentsOfURL:location];
+        
+        UIImage *image = [UIImage imageWithData:data];
+        
+        completion(image);
+    
+    }];
+    
+    [downloadTask resume];
+
+}
+
+#pragma mark Create My Custom UIActivityIndicatorView
+
+- (UIActivityIndicatorView *)createMyCustomUIActivityIndicatorViewWithframe:(CGRect)frame {
+    
+    UIActivityIndicatorView *myActivityIndicatorView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, CGRectGetWidth(frame), CGRectGetHeight(frame))];
+    myActivityIndicatorView.center = CGPointMake(CGRectGetWidth(frame) / 2.0f, CGRectGetHeight(frame) / 2.0f);
     myActivityIndicatorView.hidesWhenStopped = YES;
     myActivityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     myActivityIndicatorView.color = [UIColor blackColor];

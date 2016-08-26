@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoadingImageView.h"
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet LoadingImageView *myLoadingImageView;
 
 @end
 
