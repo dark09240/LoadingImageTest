@@ -22,12 +22,8 @@
 }
 
 - (void)createMyLoadingImageView {
-
-    CGRect frame;
     
-    NSString *urlstring = @"http://122.146.84.65:8081/phpqrcode/temp/test.png";
-    
-//    _myLoadingImageView = [[LoadingImageView alloc]initWithFrame:frame URL:urlstring];
+    NSString *urlstring = @"";
 
     [_myLoadingImageView startWithURL:urlstring];
     
